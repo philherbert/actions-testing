@@ -29,9 +29,19 @@ jobs:
         time: '20s'
 
     - name: Update deployment status (success)
+      if: success()
       uses: chrnorm/deployment-status@releases/v1
       with:
-        token: "${{ secrets.DEPLOY_TOKEN }}"
+        token: ${{ secrets.DEPLOY_TOKEN }}
         target_url: http://my-app-url.com
         state: "success"
+        deployment_id: ${{ github.event.deployment.id }}
+
+    - name: Update deployment status (failure)
+      if: failure()
+      uses: chrnorm/deployment-status@releases/v1
+      with:
+        token: ${{ secrets.DEPLOY_TOKEN }}
+        target_url: http://my-app-url.com
+        state: "failure"
         deployment_id: ${{ github.event.deployment.id }}
