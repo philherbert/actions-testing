@@ -25,6 +25,14 @@ jobs:
     - uses: chrnorm/deployment-action@releases/v1
       name: Create GitHub deployment
       with:
-        token: "${{ secrets.DEPLOY_TOKEN }}"
+        token: ${{ secrets.DEPLOY_TOKEN }}
         target_url: http://my-app-url.com
         environment: production
+
+    - name: Wait for deploy
+      uses: fountainhead/action-wait-for-check@v1.0.0
+      id: wait-for-build
+      with:
+        token: ${{ secrets.DEPLOY_TOKEN }}
+        checkName: Deploy
+        ref: ${{ github.sha }}

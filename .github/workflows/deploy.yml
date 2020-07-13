@@ -23,9 +23,10 @@ jobs:
     - name: Run a one-line script
       run: echo This is where a deployment would go!
 
-    # Runs a single command using the runners shell
-    - name: Print event contents
-      run: echo ${{ github.event }}
+    - name: Sleep for 30 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '20s'
 
     - name: Update deployment status (success)
       uses: chrnorm/deployment-status@releases/v1
