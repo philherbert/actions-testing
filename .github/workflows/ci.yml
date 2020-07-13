@@ -33,7 +33,7 @@ jobs:
       uses: fountainhead/action-wait-for-check@v1.0.0
       with:
         token: ${{ secrets.DEPLOY_TOKEN }}
-        checkName: deploy
+        checkName: "Deploy to dev"
         ref: ${{ github.sha }}
 
     - uses: chrnorm/deployment-action@releases/v1
@@ -47,5 +47,5 @@ jobs:
       uses: fountainhead/action-wait-for-check@v1.0.0
       with:
         token: ${{ secrets.DEPLOY_TOKEN }}
-        checkName: deploy
+        checkName: "Deploy to staging"
         ref: ${{ github.sha }}
