@@ -22,7 +22,7 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Fake deploy
-      run: echo Deploying to ${{ github.event.deployment.environment }}
+      run: echo Fake deploying to ${{ github.event.deployment.environment }}
 
     - name: Sleep for 5 seconds
       uses: jakejarvis/wait-action@master
